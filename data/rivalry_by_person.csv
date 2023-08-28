@@ -1,0 +1,57 @@
+﻿a.fname,type(r),b.fname,count(r)
+"""Kendall""","""LOST_TO""","""Spencer""",25
+"""Kendall""","""LOST_TO""","""Brian""",22
+"""Spencer""","""LOST_TO""","""Brian""",19
+"""Lee Ann""","""LOST_TO""","""Brian""",19
+"""Kimball""","""LOST_TO""","""Kendall""",18
+"""Sam""","""LOST_TO""","""Spencer""",17
+"""Brian""","""LOST_TO""","""Spencer""",16
+"""Elisabeth""","""LOST_TO""","""Spencer""",15
+"""Kimball""","""LOST_TO""","""Brian""",15
+"""Brian""","""LOST_TO""","""Kendall""",14
+"""Kimball""","""LOST_TO""","""Spencer""",14
+"""Sam""","""LOST_TO""","""Brian""",14
+"""Sam""","""LOST_TO""","""Kendall""",13
+"""Lee Ann""","""LOST_TO""","""Spencer""",13
+"""Lee Ann""","""LOST_TO""","""Kendall""",13
+"""Kendall""","""LOST_TO""","""Sam""",12
+"""Spencer""","""LOST_TO""","""Kendall""",11
+"""Elisabeth""","""LOST_TO""","""Brian""",10
+"""Lee Ann""","""LOST_TO""","""Kimball""",10
+"""Lee Ann""","""LOST_TO""","""Sam""",10
+"""Elisabeth""","""LOST_TO""","""Kendall""",9
+"""Kimball""","""LOST_TO""","""Lee Ann""",9
+"""Sam""","""LOST_TO""","""Elisabeth""",9
+"""Brian""","""LOST_TO""","""Sam""",8
+"""Elisabeth""","""LOST_TO""","""Kimball""",8
+"""Elisabeth""","""LOST_TO""","""Sam""",8
+"""Brian""","""LOST_TO""","""Kimball""",7
+"""Spencer""","""LOST_TO""","""Lee Ann""",7
+"""Spencer""","""LOST_TO""","""Kimball""",7
+"""Kendall""","""LOST_TO""","""Elisabeth""",7
+"""Kendall""","""LOST_TO""","""Lee Ann""",7
+"""Lee Ann""","""LOST_TO""","""Elisabeth""",7
+"""Deepa""","""LOST_TO""","""Brian""",7
+"""Kendall""","""LOST_TO""","""Kimball""",6
+"""Kimball""","""LOST_TO""","""Sam""",6
+"""Sam""","""LOST_TO""","""Kimball""",6
+"""Brian""","""LOST_TO""","""Elisabeth""",5
+"""Kimball""","""LOST_TO""","""Elisabeth""",5
+"""Sam""","""LOST_TO""","""Lee Ann""",5
+"""Brian""","""LOST_TO""","""Lee Ann""",4
+"""Spencer""","""LOST_TO""","""Sam""",4
+"""Spencer""","""LOST_TO""","""Deepa""",4
+"""Deepa""","""LOST_TO""","""Spencer""",4
+"""Elisabeth""","""LOST_TO""","""Deepa""",3
+"""Elisabeth""","""LOST_TO""","""Lee Ann""",3
+"""Deepa""","""LOST_TO""","""Elisabeth""",3
+"""Deepa""","""LOST_TO""","""Kendall""",3
+"""Brian""","""LOST_TO""","""Deepa""",2
+"""Spencer""","""LOST_TO""","""Elisabeth""",2
+"""Kendall""","""LOST_TO""","""Deepa""",2
+"""Sam""","""LOST_TO""","""Deepa""",2
+"""Lee Ann""","""LOST_TO""","""Deepa""",2
+"""Deepa""","""LOST_TO""","""Kimball""",2
+"""Deepa""","""LOST_TO""","""Lee Ann""",2
+"""Kimball""","""LOST_TO""","""Deepa""",1
+"""Deepa""","""LOST_TO""","""Sam""",1
