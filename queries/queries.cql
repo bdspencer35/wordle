@@ -113,14 +113,6 @@ MATCH (n:Person)
 RETURN n.fname, n.pagerank_weighted 
 ORDER BY n.pagerank_weighted DESC
 
-// Number of tiebreakers each person has been involved in (win or lose)
-MATCH (p1:Person)-[l:LOST_TO]->(:Person)
-WITH p1, count(l) AS num_losses
-MATCH (:Person)-[w:LOST_TO]->(p1)
-WITH p1, num_losses, count(w) AS num_wins
-RETURN p1.fname, num_losses + num_wins AS num_tiebreakers, num_wins, num_losses, num_wins / num_tiebreakers AS win_pct
-ORDER BY num_tiebreakers DESC
-
 // Print the named graphs in the database
 CALL gds.graph.list()
 YIELD graphName, nodeCount, relationshipCount
