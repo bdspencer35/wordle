@@ -1,0 +1,9 @@
+﻿n.fname,apoc.number.format(n.pagerank_weighted2)
+"""Spencer""","""1.51"""
+"""Brian""","""1.493"""
+"""Kendall""","""1.304"""
+"""Sam""","""0.879"""
+"""Kimball""","""0.805"""
+"""Lee Ann""","""0.745"""
+"""Elisabeth""","""0.635"""
+"""Deepa""","""0.318"""

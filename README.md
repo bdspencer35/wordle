@@ -26,4 +26,67 @@ Inside the `data` folder are the results of creating the graph based on the dail
 
 ## graph analytics
 
-coming soon
+### pagerank on the rivalry graph
+
+The PageRank algorithm measures the importance of each node within the graph, based on the number incoming relationships and the importance of the corresponding source nodes. The underlying assumption roughly speaking is that a page is only as important as the pages that link to it.
+
+In this context, the pages we'd like to rank are people and the number of times others lost to that person "boosts" their importance in the graph. In other words, having lots of tiebreaker wins, especially against others who also have a high number of tiebreaker wins will boost your pagerank score.
+
+First, we need to project the graph so we are only running the algorithm on the part of the graph we are interested in.
+
+```
+CALL gds.graph.project(
+  'rivalry',
+  'Person',
+  'LOST_TO'
+)
+```
+
+We then run the pagerank algorithm and write the resulting property to the database.
+
+```
+CALL gds.pageRank.write('rivalry', {
+  maxIterations: 20,
+  dampingFactor: 0.85,
+  writeProperty: 'pagerank'
+})
+YIELD nodePropertiesWritten, ranIterations
+```
+
+Query the graph for the results:
+
+```
+MATCH (p:Person) 
+RETURN p.fname AS fname, apoc.number.format(p.pagerank) AS pagerank
+ORDER BY pagerank DESC
+```
+
+Results:
+
+| fname    | pagerank  |
+| ---------| -------
+| Brian    | 1.54 |
+| Spencer  | 1.487 |
+| Kendall  | 1.285   |
+| Sam      | 0.823 |
+| Kimball  | 0.807  |
+| Lee Ann  | 0.702  |
+| Elisabeth| 0.652 |
+| Deepa    | 0.393  |
+
+While I love to toot my own horn, I did achieve a large number of tiebreaker wins at a time before our group fully established tiebreaker rules. The tiebreaker wins I achieved were with a different word game that I found easy to hack to get good scores. So to account for this we can create weights on the `LOST_TO` relationships that occurred before and after the time when we finally settled on consistent and fair tiebreaker rules.
+
+A `weight` property equal to `0.5` was set on all of the `LOST_TO` relationships that occurred before the date `2023-03-22`. After this date to the present day, a `weight` of `1` was set on all of the `LOST_TO` relationships. I.e. we are biasing the more recent tiebreaker wins over the ones from earlier seasons. After creating a new projection including the weight property (see queries for exact process) the pagerank results change:
+
+| fname    | pagerank  |
+| ---------| -------
+| Spencer    | 1.51 |
+| Brian  | 1.493 |
+| Kendall  | 1.304   |
+| Sam      | 0.879 |
+| Kimball  | 0.805  |
+| Lee Ann  | 0.745  |
+| Elisabeth| 0.635 |
+| Deepa    | 0.318  |
+
+This feels more correct based on how our group plays especially in more recent months.
