@@ -126,3 +126,13 @@ MATCH (:Person)-[w:LOST_TO]->(p1:Person {fname:fname})
 WITH p1.fname AS fname, num_losses, count(distinct w.dt) AS num_wins
 RETURN fname, num_losses, num_wins, num_losses + num_wins AS num_tiebreakers, apoc.number.format(toFloat(num_wins) / (num_wins + num_losses)) AS win_pct
 ORDER BY win_pct DESC
+
+// win percentages pairwise in tiebreakers
+MATCH (p1:Person)-[l:LOST_TO]->(p2:Person)
+WITH p1.fname AS fname1, p2.fname AS fname2, count(l.dt) AS num_losses
+MATCH (p2:Person {fname:fname2})-[w:LOST_TO]->(p1:Person {fname:fname1})
+WITH p1.fname AS fname1, p2.fname AS fname2, num_losses, count(distinct w.dt) AS num_wins
+WITH fname1, fname2, num_losses, num_wins, num_losses + num_wins AS num_tiebreakers, apoc.number.format(toFloat(num_wins) / (num_wins + num_losses)) AS win_pct
+WHERE win_pct >= '0.5' // result set is symmetric about 0.5
+RETURN fname1, 'beat', fname2, num_wins, num_losses, num_tiebreakers, win_pct
+ORDER BY win_pct DESC
